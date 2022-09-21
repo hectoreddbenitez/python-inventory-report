@@ -23,4 +23,4 @@ def test_relatorio_produto():
         f" precisa ser armazenado {mock.instrucoes_de_armazenamento}."
     )
 
-    assert repr(product) == result
+    assert product.__repr__() == result
