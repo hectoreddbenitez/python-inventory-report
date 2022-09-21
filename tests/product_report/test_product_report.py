@@ -15,12 +15,12 @@ def test_relatorio_produto():
         mock.instrucoes_de_armazenamento,
     )
 
-    assert product.id == mock.id
-    assert product.nome_do_produto == mock.nome_do_produto
-    assert product.nome_da_empresa == mock.nome_da_empresa
-    assert product.data_de_fabricacao == mock.data_de_fabricacao
-    assert product.data_de_validade == mock.data_de_validade
-    assert product.numero_de_serie == mock.numero_de_serie
-    assert (
-        product.instrucoes_de_armazenamento == mock.instrucoes_de_armazenamento
+    result = (
+        f"O produto {mock.nome_do_produto}"
+        f" fabricado em {mock.data_de_fabricacao}"
+        f" por {mock.nome_da_empresa} com validade"
+        f" até {mock.data_de_validade}"
+        f" precisa ser armazenado {mock.instrucoes_de_armazenamento}."
     )
+
+    assert repr(product) == result
