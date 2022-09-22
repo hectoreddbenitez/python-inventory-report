@@ -18,6 +18,7 @@ class CompleteReport(SimpleReport):
         return (
             f"{report}\n"
             "Produtos estocados por empresa:\n"
-            # referencia: https://www.delftstack.com/pt/howto/python/python-print-lists/
+            # referencia:
+            # https://www.delftstack.com/pt/howto/python/python-print-lists/
             f"{''.join(map(str,products_per_companie))}"
         )
