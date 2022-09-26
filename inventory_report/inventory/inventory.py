@@ -1,23 +1,23 @@
+from ast import parse
 from csv import DictReader
+import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
 class Inventory:
-
-    @classmethod
-    def importa_data(path):
-        try:
-            product_list = []
+    def file_reader(path):
+        # product_list = []
+        if ".csv" in path:
             with open(path, encoding="utf8") as file:
-                read_file = DictReader(file, delimiter=",", quotechar='"')
-                for row in read_file:
-                    product_list.append(row)
-            file.close()
-            return product_list
-        except FileNotFoundError:
-            raise FileNotFoundError
+                return [lines for lines in DictReader(file)]
 
     @classmethod
-    def relatoy_generator():
-        ...
+    def import_data(cls, path, relatory):
+        products_list = Inventory.file_reader(path)
+        if relatory == "simples":
+            simples_report = SimpleReport.generate(products_list)
+            return simples_report
+        if relatory == "completo":
+            complete_report = CompleteReport.generate(products_list)
+            return complete_report
