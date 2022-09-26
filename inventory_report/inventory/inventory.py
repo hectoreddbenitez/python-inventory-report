@@ -11,6 +11,9 @@ class Inventory:
         if ".csv" in path:
             with open(path, encoding="utf8") as file:
                 return [lines for lines in DictReader(file)]
+        if '.json' in path:
+            with open(path, encoding="utf8") as file:
+                return json.load(file)
 
     @classmethod
     def import_data(cls, path, relatory):
