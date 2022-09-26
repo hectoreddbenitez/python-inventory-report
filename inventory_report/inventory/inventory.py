@@ -7,13 +7,14 @@ from inventory_report.reports.complete_report import CompleteReport
 
 class Inventory:
     def file_reader(path):
-        # product_list = []
         if ".csv" in path:
             with open(path, encoding="utf8") as file:
                 return [lines for lines in DictReader(file)]
         if ".json" in path:
             with open(path, encoding="utf8") as file:
                 return json.load(file)
+                # referencia:
+                # https://pypi.org/project/xmltodict/
                 # assistido pelo grande "JVO" - João Vitor Oliveira!
         if ".xml" in path:
             with open(path, encoding="utf8") as file:
