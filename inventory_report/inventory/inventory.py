@@ -1,4 +1,4 @@
-from ast import parse
+import xmltodict
 from csv import DictReader
 import json
 from inventory_report.reports.simple_report import SimpleReport
@@ -11,9 +11,13 @@ class Inventory:
         if ".csv" in path:
             with open(path, encoding="utf8") as file:
                 return [lines for lines in DictReader(file)]
-        if '.json' in path:
+        if ".json" in path:
             with open(path, encoding="utf8") as file:
                 return json.load(file)
+                # assistido pelo grande "JVO" - João Vitor Oliveira!
+        if ".xml" in path:
+            with open(path, encoding="utf8") as file:
+                return xmltodict.parse(file.read())["dataset"]["record"]
 
     @classmethod
     def import_data(cls, path, relatory):
